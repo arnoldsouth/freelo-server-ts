@@ -1,8 +1,19 @@
 export interface MatchListDto {
-  matches: MatchDto[];
+  matches: InfoDto[];
 }
 
 export interface MatchDto {
+  metadata: MetadataDto;
+  info: InfoDto;
+}
+
+export interface MetadataDto {
+  dataVersion: string;
+  matchId: string;
+  participants: string[];
+}
+
+export interface InfoDto {
   gameCreation: number;
   gameDuration: number;
   gameEndTimestamp: number;
