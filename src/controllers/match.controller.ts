@@ -1,0 +1,54 @@
+// import axios from 'axios';
+import { Request, Response } from 'express';
+import { RiotService } from '../services/riot.service';
+
+const riotService = new RiotService();
+
+export const getMatchApi = async (_req: Request, res: Response) => {
+  res.status(200).json({ '/api/v1/match': 'ok' });
+};
+
+export const getMatchList = async (req: Request, res: Response) => {
+  try {
+    const puuid = req.params.puuid;
+    const matchList = await riotService.getMatchListByPuuid(puuid);
+
+    res.json(matchList);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json(error.message);
+      return;
+    }
+  }
+};
+
+export const getMatchData = async (req: Request, res: Response) => {
+  try {
+    const matchId = req.params.id;
+    const matchData = await riotService.getMatchDataByMatchId(matchId);
+
+    res.json(matchData);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json(error.message);
+      return;
+    }
+  }
+};
+
+export const getMatchListData = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const puuid = req.params.puuid;
+    const matchListData = await riotService.getMatchListDataByPuuid(puuid);
+
+    res.json(matchListData);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json(error.message);
+      return;
+    }
+  }
+};
