@@ -36,15 +36,12 @@ export const getMatchData = async (req: Request, res: Response) => {
   }
 };
 
-export const getMatchListData = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const getMatchHistory = async (req: Request, res: Response) => {
   try {
     const puuid = req.params.puuid;
-    const matchListData = await riotService.getMatchListDataByPuuid(puuid);
+    const matchHistory = await riotService.getMatchHistoryByPuuid(puuid);
 
-    res.json(matchListData);
+    res.json(matchHistory);
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).json(error.message);

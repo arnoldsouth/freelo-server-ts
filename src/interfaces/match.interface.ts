@@ -1,34 +1,26 @@
-export interface MatchListDto {
-  matches: InfoDto[];
-}
-
 export interface MatchDto {
-  metadata: MetadataDto;
-  info: InfoDto;
-}
-
-export interface MetadataDto {
-  dataVersion: string;
-  matchId: string;
-  participants: string[];
-}
-
-export interface InfoDto {
-  gameCreation: number;
-  gameDuration: number;
-  gameEndTimestamp: number;
-  gameId: number;
-  gameMode: string;
-  gameName: string;
-  gameStartTimestamp: number;
-  gameType: string;
-  gameVersion: string;
-  mapId: number;
-  participants: ParticipantDto[];
-  platformId: string;
-  queueId: number;
-  teams: TeamDto[];
-  tournamentCode: string;
+  metadata: {
+    dataVersion: string;
+    matchId: string;
+    participants: string[];
+  };
+  info: {
+    gameCreation: number;
+    gameDuration: number;
+    gameEndTimestamp: number;
+    gameId: number;
+    gameMode: string;
+    gameName: string;
+    gameStartTimestamp: number;
+    gameType: string;
+    gameVersion: string;
+    mapId: number;
+    participants: ParticipantDto[];
+    platformId: string;
+    queueId: number;
+    teams: TeamDto[];
+    tournamentCode: string;
+  };
 }
 
 export interface ParticipantDto {
