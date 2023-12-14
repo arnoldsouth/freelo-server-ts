@@ -5,7 +5,10 @@ import { RiotService } from '../services/riot.service';
 const riotService = new RiotService();
 
 export const getMatchApi = async (_req: Request, res: Response) => {
-  res.status(200).json({ '/api/v1/match': 'ok' });
+  const data = {
+    '/api/v1/match': 'good',
+  };
+  res.send(data).status(200);
 };
 
 export const getMatchList = async (req: Request, res: Response) => {

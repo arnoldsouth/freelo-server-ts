@@ -4,7 +4,10 @@ import { RiotService } from '../services/riot.service';
 const riotService = new RiotService();
 
 export const getSummonerApi = (_req: Request, res: Response) => {
-  res.status(200).json({ '/api/v1/summoner': 'ok' });
+  const data = {
+    '/api/v1/summoner': 'good',
+  };
+  res.send(data).status(200);
 };
 
 export const getSummonerData = async (req: Request, res: Response) => {
