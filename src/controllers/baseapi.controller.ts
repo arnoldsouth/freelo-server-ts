@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export const getApiBase = async (_req: Request, res: Response) => {
+export const getBaseApi = async (_req: Request, res: Response) => {
   const data = {
     '/api/v1': 'good',
   };

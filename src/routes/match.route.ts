@@ -1,8 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 
 import * as MatchController from '../controllers/match.controller';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/', MatchController.getMatchApi);
 router.get('/list/:puuid', MatchController.getMatchList);
