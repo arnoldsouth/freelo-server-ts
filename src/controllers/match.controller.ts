@@ -6,11 +6,12 @@ const riotService = new RiotService();
 
 export const getMatchApi = async (_req: Request, res: Response) => {
   const data = {
-    '/api/v1/match': 'good',
+    '/match': 'good',
   };
   res.send(data).status(200);
 };
 
+// Get Summoner Recent Matches List (list of matchIds)
 export const getMatchList = async (req: Request, res: Response) => {
   try {
     const puuid = req.params.puuid;
@@ -25,9 +26,10 @@ export const getMatchList = async (req: Request, res: Response) => {
   }
 };
 
+// Get Match Data (match data of one match by matchId)
 export const getMatchData = async (req: Request, res: Response) => {
   try {
-    const matchId = req.params.id;
+    const matchId = req.params.matchId;
     const matchData = await riotService.getMatchDataByMatchId(matchId);
 
     res.json(matchData);
@@ -39,6 +41,7 @@ export const getMatchData = async (req: Request, res: Response) => {
   }
 };
 
+// Get Summoner Recent Matches History (match data of recent matches of a summoner using getMatchListByPuuid() and getMatchDataByMatchId() methods)
 export const getMatchHistory = async (req: Request, res: Response) => {
   try {
     const puuid = req.params.puuid;

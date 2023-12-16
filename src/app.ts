@@ -14,8 +14,8 @@ app.use(cors());
 
 // Routes
 app.use('/api/v1', Routers.baseApiRoute);
-app.use('/api/v1/match', Routers.matchRoute);
 app.use('/api/v1/summoner', Routers.summonerRoute);
+app.use('/api/v1/match', Routers.matchRoute);
 app.use('/api/v1/league', Routers.leagueRoute);
 
 export { app };
