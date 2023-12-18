@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import { Request, Response } from 'express';
-import { RiotService } from '../services/riot.service';
+import { RiotService } from '../../services/lol/riot.service';
 
 const riotService = new RiotService();
 

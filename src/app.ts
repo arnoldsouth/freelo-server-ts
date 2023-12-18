@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import * as Routers from './routes';
+import * as LolRouters from './routes/lol';
+import * as ValRouters from './routes/val';
 
 dotenv.config();
 
@@ -12,10 +14,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Routes
+// Base Route
 app.use('/api/v1', Routers.baseApiRoute);
-app.use('/api/v1/summoner', Routers.summonerRoute);
-app.use('/api/v1/match', Routers.matchRoute);
-app.use('/api/v1/league', Routers.leagueRoute);
+
+// Lol Routes
+app.use('/api/v1/lol', LolRouters.lolApiRoute);
+app.use('/api/v1/lol/summoner', LolRouters.summonerRoute);
+app.use('/api/v1/lol/match', LolRouters.matchRoute);
+app.use('/api/v1/lol/league', LolRouters.leagueRoute);
+
+// Val Routes
+app.use('/api/v1/val', ValRouters.valApiRoute);
+app.use('/api/v1/val/content', ValRouters.contentRoute);
 
 export { app };

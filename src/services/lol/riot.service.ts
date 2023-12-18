@@ -1,11 +1,14 @@
 import {
   axiosInstancePlatformUrl,
   axiosInstanceRegionUrl,
-} from '../utils/axiosInstance';
+} from '../../utils/lol/axiosInstance';
 
-import { LeagueItemDto, LeagueListDto } from '../interfaces/league.interface';
-import { MatchDto } from '../interfaces/match.interface';
-import { SummonerDto } from '../interfaces/summoner.interface';
+import {
+  LeagueItemDto,
+  LeagueListDto,
+} from '../../interfaces/lol/league.interface';
+import { MatchDto } from '../../interfaces/lol/match.interface';
+import { SummonerDto } from '../../interfaces/lol/summoner.interface';
 
 export class RiotService {
   // SUMMONER-V4

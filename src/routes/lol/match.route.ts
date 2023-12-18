@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as MatchController from '../controllers/match.controller';
+import * as MatchController from '../../controllers/lol/match.controller';
 
 const router = Router();
 

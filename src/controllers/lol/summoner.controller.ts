@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { RiotService } from '../services/riot.service';
-import { DdragonService } from '../services/ddragon.service';
+import { RiotService } from '../../services/lol/riot.service';
+import { DdragonService } from '../../services/lol/ddragon.service';
 
 const riotService = new RiotService();
 const ddragonService = new DdragonService();

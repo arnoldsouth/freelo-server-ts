@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import * as BaseApiController from '../controllers/baseapi.controller';
+import * as BaseController from '../controllers/baseapi.controller';
 
 const router = Router();
 
-router.get('/', BaseApiController.getBaseApi);
+router.get('/', BaseController.getBaseApi);
 
 export { router as baseApiRoute };

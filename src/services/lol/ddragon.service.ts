@@ -1,4 +1,4 @@
-import { axiosInstanceDDragonUrl } from '../utils/axiosInstance';
+import { axiosInstanceDDragonUrl } from '../../utils/lol/axiosInstance';
 
 export class DdragonService {
   async getLatestVersion() {

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as SummonerController from '../controllers/summoner.controller';
+import * as SummonerController from '../../controllers/lol/summoner.controller';
 
 const router = Router();
 
