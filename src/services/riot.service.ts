@@ -26,12 +26,29 @@ export class RiotService {
   // LEAGUE-V4
 
   // Get League Data by division, tier, queue (returns entries of of all players in a selected league by queue, tier, and division. Return each player's entry with their id, name, tier, rank, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak)
+  async getLeagueExpByQueueTierDivision(
+    queue: string,
+    tier: string,
+    division: string
+  ): Promise<LeagueListDto> {
+    const response = await axiosInstancePlatformUrl.get(
+      // `/lol/league/v4/entries/${queue}/${tier}/${division}`,
+      `/lol/league-exp/v4/entries/${queue}/${tier}/${division}`,
+      {
+        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
+      }
+    );
+    return response.data;
+  }
+
+  // Get League Data by division, tier, queue (returns entries of of all players in a selected league by queue, tier, and division. Return each player's entry with their id, name, tier, rank, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak)
   async getLeagueByQueueTierDivision(
     queue: string,
     tier: string,
     division: string
   ): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
+      // `/lol/league/v4/entries/${queue}/${tier}/${division}`,
       `/lol/league/v4/entries/${queue}/${tier}/${division}`,
       {
         headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },

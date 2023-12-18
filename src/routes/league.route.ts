@@ -4,6 +4,7 @@ import * as LeagueController from '../controllers/league.controller';
 const router = Router();
 
 router.get('/', LeagueController.getLeagueApi);
+router.get('/exp/:queue/:tier/:division', LeagueController.getLeagueExp);
 router.get('/:queue/:tier/:division', LeagueController.getLeague);
 router.get(
   '/leaderboard/challenger',

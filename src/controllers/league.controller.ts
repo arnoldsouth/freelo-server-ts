@@ -10,7 +10,27 @@ export const getLeagueApi = async (_req: Request, res: Response) => {
   res.send(data).status(200);
 };
 
-// Get League Data by division, tier, queue (returns entries of of all players in a selected league by queue, tier, and division. Return each player's entry with their id, name, tier, rank, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak)
+// Get League Data by division, tier, queue (INCLUDES ALL LEAGUE QUEUES) (returns entries of of all players in a selected league by queue, tier, and division. Return each player's entry with their id, name, tier, rank, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak)
+export const getLeagueExp = async (req: Request, res: Response) => {
+  try {
+    const queue = req.params.queue;
+    const tier = req.params.tier;
+    const division = req.params.division;
+    const league = await riotService.getLeagueExpByQueueTierDivision(
+      queue,
+      tier,
+      division
+    );
+    res.json(league);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json(error.message);
+      return;
+    }
+  }
+};
+
+// Get League Data by division, tier, queue (DIAMOND AND BELOW ONLY) (returns entries of of all players in a selected league by queue, tier, and division. Return each player's entry with their id, name, tier, rank, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak)
 export const getLeague = async (req: Request, res: Response) => {
   try {
     const queue = req.params.queue;
