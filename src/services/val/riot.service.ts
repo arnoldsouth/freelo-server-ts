@@ -1,15 +1,12 @@
 import { axiosInstancePlatformUrl } from '../../utils/val/axiosInstance';
 
-import {
-  // ContentDto,
-  LocalizedNamesDto,
-} from '../../interfaces/val/content.interface';
+import { ActDto, ContentDto } from '../../interfaces/val/content.interface';
 
 export class RiotService {
   // VAL-CONTENT-V1
 
   // Get Valorant Content filtered by Locale
-  async getContent(locale: string): Promise<LocalizedNamesDto> {
+  async getContentByLocale(locale: string): Promise<ContentDto> {
     const response = await axiosInstancePlatformUrl.get(
       `/val/content/v1/contents?locale=${locale}`,
       {
@@ -19,5 +16,42 @@ export class RiotService {
       }
     );
     return response.data;
+  }
+
+  async getLeaderboardByActId(actId: string): Promise<ContentDto> {
+    const response = await axiosInstancePlatformUrl.get(
+      `/val/ranked/v1/leaderboards/by-act/${actId}`,
+      {
+        headers: {
+          'X-Riot-Token': process.env.RIOT_API_KEY,
+        },
+      }
+    );
+    return response.data;
+  }
+
+  // async getActiveActIdByLocale(locale: string): Promise<ContentDto> {
+  async getActiveActIdByLocale(locale: string): Promise<string> {
+    const response = await axiosInstancePlatformUrl.get(
+      `/val/content/v1/contents?locale=${locale}`,
+      {
+        headers: {
+          'X-Riot-Token': process.env.RIOT_API_KEY,
+        },
+      }
+    );
+    const activeAct = response.data.acts.find((act: ActDto) => act.isActive);
+    const activeActId = activeAct?.id;
+
+    // console.log(activeActId);
+    return activeActId;
+  }
+
+  async getLeaderboardByActiveActId(locale: string): Promise<ContentDto> {
+    const actId = await this.getActiveActIdByLocale(locale);
+    const leaderboard = await this.getLeaderboardByActId(actId);
+
+    // console.log(leaderboard);
+    return leaderboard;
   }
 }

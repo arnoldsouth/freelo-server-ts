@@ -13,7 +13,9 @@ export const getContentApi = (_req: Request, res: Response) => {
 export const getContent = async (req: Request, res: Response) => {
   try {
     const locale = req.params.locale;
-    const content = await riotService.getContent(locale);
+    const content = await riotService.getContentByLocale(locale);
+
+    riotService.getLeaderboardByActiveActId(locale);
     res.json(content);
   } catch (error) {
     if (error instanceof Error) {

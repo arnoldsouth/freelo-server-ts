@@ -26,5 +26,6 @@ app.use('/api/v1/lol/league', LolRouters.leagueRoute);
 // Val Routes
 app.use('/api/v1/val', ValRouters.valApiRoute);
 app.use('/api/v1/val/content', ValRouters.contentRoute);
+app.use('/api/v1/val/ranked', ValRouters.rankedRoute);
 
 export { app };
