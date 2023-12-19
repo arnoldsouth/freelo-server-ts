@@ -16,12 +16,7 @@ export class RiotService {
   // Get Summoner Data (id, accountId, puuid, name, profileIconId, revisionDate, summonerLevel)
   async getSummonerByName(summonerName: string): Promise<SummonerDto> {
     const response = await axiosInstancePlatformUrl.get(
-      `/lol/summoner/v4/summoners/by-name/${summonerName}`,
-      {
-        headers: {
-          'X-Riot-Token': process.env.RIOT_API_KEY,
-        },
-      }
+      `/lol/summoner/v4/summoners/by-name/${summonerName}?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -36,10 +31,7 @@ export class RiotService {
   ): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
       // `/lol/league/v4/entries/${queue}/${tier}/${division}`,
-      `/lol/league-exp/v4/entries/${queue}/${tier}/${division}`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league-exp/v4/entries/${queue}/${tier}/${division}?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -52,10 +44,7 @@ export class RiotService {
   ): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
       // `/lol/league/v4/entries/${queue}/${tier}/${division}`,
-      `/lol/league/v4/entries/${queue}/${tier}/${division}`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league/v4/entries/${queue}/${tier}/${division}?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -63,10 +52,7 @@ export class RiotService {
   // Get Solo Queue Challenger Leaderboard
   async getLeaderboardChallengerByQueue(): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
-      `/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -74,10 +60,7 @@ export class RiotService {
   // Get Solo Queue Grandmaster Leaderboard
   async getLeaderboardGrandmasterByQueue(): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
-      `/lol/league/v4/grandmasterleagues/by-queue/RANKED_SOLO_5x5`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league/v4/grandmasterleagues/by-queue/RANKED_SOLO_5x5?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -85,10 +68,7 @@ export class RiotService {
   // Get Solo Queue Master Leaderboard
   async getLeaderboardMasterByQueue(): Promise<LeagueListDto> {
     const response = await axiosInstancePlatformUrl.get(
-      `/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -96,10 +76,7 @@ export class RiotService {
   // Get Summoner Rank
   async getSummonerLeagueDataById(summonerId: string): Promise<LeagueItemDto> {
     const response = await axiosInstancePlatformUrl.get(
-      `/lol/league/v4/entries/by-summoner/${summonerId}`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/league/v4/entries/by-summoner/${summonerId}?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -109,10 +86,7 @@ export class RiotService {
   // Get Summoner Recent Matches List (list of matchIds)
   async getMatchListByPuuid(puuid: string): Promise<string[]> {
     const response = await axiosInstanceRegionUrl.get(
-      `/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }
@@ -120,10 +94,7 @@ export class RiotService {
   // Get Match Data (data of one match by matchId)
   async getMatchDataByMatchId(matchId: string): Promise<MatchDto> {
     const response = await axiosInstanceRegionUrl.get(
-      `/lol/match/v5/matches/${matchId}`,
-      {
-        headers: { 'X-Riot-Token': process.env.RIOT_API_KEY },
-      }
+      `/lol/match/v5/matches/${matchId}?&api_key=${process.env.RIOT_API_KEY}`
     );
     return response.data;
   }

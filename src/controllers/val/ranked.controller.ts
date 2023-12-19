@@ -7,6 +7,7 @@ export const getRankedApi = (_req: Request, res: Response) => {
   const data = {
     '/ranked': 'good',
   };
+
   res.send(data).status(200);
 };
 
@@ -14,6 +15,7 @@ export const getLeaderboard = async (req: Request, res: Response) => {
   try {
     const actId = req.params.actId;
     const leaderboard = await riotService.getLeaderboardByActId(actId);
+
     res.json(leaderboard);
   } catch (error) {
     if (error instanceof Error) {
@@ -29,7 +31,7 @@ export const getActiveLeaderboard = async (req: Request, res: Response) => {
     const activeLeaderboard = await riotService.getLeaderboardByActiveActId(
       locale
     );
-    console.log(activeLeaderboard);
+    // console.log(activeLeaderboard);
 
     res.json(activeLeaderboard);
   } catch (error) {
